@@ -9,12 +9,29 @@ class RiyaAssistant:
         print(f"Hello {self.owner} 💖")
 
     def listen_for_owner_command(self):
-        print("Riya tumhari command ka wait kar rahi hai 🎙️")
+        command = input("Boss 🎙️: ")
+        return command
 
-    def handle_call(self):
-        print("Riya call handling mode me hai 📞")
+    def handle_command(self, command):
+        command = command.lower()
+
+        if "call karo" in command:
+            person = command.replace("riya", "").replace("call karo", "").replace(" ko", "").strip()
+            print("📞 Riya: Boss, call command samajh gayi.")
+            print(f"👤 Person: {person}")
+
+        elif "baat karo" in command:
+            print("🗣️ Riya: Boss, conversation mode samajh gayi.")
+
+        elif "call band" in command:
+            print("🔴 Riya: Boss, call end command samajh gayi.")
+
+        else:
+            print("🤔 Riya: Boss, command abhi samajh nahi aayi.")
 
 
 riya = RiyaAssistant()
 riya.start()
-riya.listen_for_owner_command()
+
+command = riya.listen_for_owner_command()
+riya.handle_command(command)
