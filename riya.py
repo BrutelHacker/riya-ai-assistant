@@ -33,5 +33,11 @@ class RiyaAssistant:
 riya = RiyaAssistant()
 riya.start()
 
-command = riya.listen_for_owner_command()
-riya.handle_command(command)
+while True:
+    command = riya.listen_for_owner_command()
+
+    if command.lower() in ["exit", "quit", "bye", "band ho jao"]:
+        print("Riya: Theek hai Boss, main standby mode me ja rahi hoon 💖")
+        break
+
+    riya.handle_command(command)
